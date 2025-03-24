@@ -1,17 +1,13 @@
+[build.environment]
+    PORT = "3000"
+    SENDGRID_API_KEY = "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"
+    MONGODB_URL = "mongodb://127.0.0.1:27017/task-manager-api"
+    JWT_SECRET = "thisisasecretformyapp"
+
 [build]
     base = "/"
-    publish = "C:\Users\CattronCLocal\Downloads\node-course\task-manager"
-    command = "node src/index.js"
-
-[[redirects]]
-    from = "/*"
-    to = "/localhost:3000/users/login"
-    status = "200"
+    
 
 [context.production]
-    environment = { NODE_VERSION = "22.14.0" }
-
-[dev]
-    command = "env-cmd -f ./config/dev.env nodemon src/index.js"
-    port = 3000
-    publish = "dist"
+    publish = "C:\Users\CattronCLocal\Downloads\node-course\task-manager"
+    command = "node 
