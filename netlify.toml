@@ -1,0 +1,4 @@
+[build]
+    command = "node src/index.js"
+    publish = "C:\Users\CattronCLocal\Downloads\node-course\task-manager"
+    node_version = "22.14.0"
