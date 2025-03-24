@@ -1,4 +1,17 @@
 [build]
-    command = "node src/index.js"
+    base = "/"
     publish = "C:\Users\CattronCLocal\Downloads\node-course\task-manager"
-    node_version = "22.14.0"
+    command = "node src/index.js"
+
+[[redirects]]
+    from = "/*"
+    to = "/localhost:3000/users/login"
+    status = "200"
+
+[context.production]
+    environment = { NODE_VERSION = "22.14.0" }
+
+[dev]
+    command = "env-cmd -f ./config/dev.env nodemon src/index.js"
+    port = 3000
+    publish = "dist"
