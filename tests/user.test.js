@@ -13,13 +13,13 @@ beforeEach(async () => {
     await new User(userOne).save()
 })
 
-// test('Should signup a new user', async () => {
-//     await request(app).post('/users').send({
-//         name: 'Joshua',
-//         email: 'jlb135190@gmail.com',
-//         password: 'MyPass777!'
-//     }).expect(201)
-// })
+test('Should signup a new user', async () => {
+    await request(app).post('/users').send({
+        name: 'Joshua',
+        email: 'jlb135190@gmail.com',
+        password: 'MyPass777!'
+    }).expect(201)
+})
 
 test('Should login existing user', async () => {
     await request(app).post('/users/login').send({
@@ -28,9 +28,9 @@ test('Should login existing user', async () => {
     }).expect(200)
 })
 
-// test('Should not login non-existent user', async () => {
-//     await request(app).post('/users/login').send({
-//         email: 'jlb135190@gmail.com',
-//         password: 'MyPass777!'
-//     }).expect(400)
-// })
+test('Should not login non-existent user', async () => {
+    await request(app).post('/users/login').send({
+        email: 'jlb135190@gmail.com',
+        password: 'MyPass777!'
+    }).expect(400)
+})
