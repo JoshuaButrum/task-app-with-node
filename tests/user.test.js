@@ -28,7 +28,7 @@ test('Should signup a new user', async () => {
 })
 
 test('Should login existing user', async () => {
-    const response = await request(app).post('/users/login').send({
+    const response = await request(app).post('/users/login').set('Authorization', `Bearer ${userOne.tokens[0].token}`).send({
         email: userOne.email,
         password: userOne.password
     }).expect(200)
@@ -37,7 +37,7 @@ test('Should login existing user', async () => {
 })
 
 test('Should not login nonexistent user', async () => {
-    await request(app).post('/users/login').send({
+    await request(app).post('/users/login').set('Authorization', `Bearer ${userOne.tokens[0].token}`).send({
         email: userOne.email,
         password: 'thisisnotmypass'
     }).expect(400)
