@@ -6,8 +6,7 @@ const { userOneId, userOne, setupDatabase } = require('./fixtures/db')
 beforeEach(setupDatabase)
 
 test('Should signup a new user', async () => {
-    const response = await request(app)
-        .post('/users').send({
+    const response = await request(app).post('/users').send({
             name: 'Andrew',
             email: 'andrew@example.com',
             password: 'MyPass777!'
@@ -29,7 +28,7 @@ test('Should signup a new user', async () => {
 })
 
 test('Should login existing user', async () => {
-    await request(app).post('/users/login').send({
+    const response = await request(app).post('/users/login').send({
         email: userOne.email,
         password: userOne.password
     }).expect(200)
@@ -69,7 +68,7 @@ test('Should delete account for user', async () => {
     expect(user).toBeNull()
 })
 
-test('Should not delete account for unauthenticated user', async () => {
+test('Should not delete account for unauthenticate user', async () => {
     await request(app)
         .delete('/users/me')
         .send()
@@ -91,9 +90,11 @@ test('Should update valid user fields', async () => {
         .patch('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send({
-            name: 'Mike'
+            name: 'Jess'
         })
         .expect(200)
+    const user = await User.findById(userOneId)
+    expect(user.name).toEqual('Jess')
 })
 
 test('Should not update invalid user fields', async () => {
