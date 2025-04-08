@@ -1,5 +1,6 @@
 const request = require('supertest')
 const app = require('../src/app')
+const mongoose = require('mongoose')
 const Task = require('../src/models/task')
 const { 
     userOneId,
@@ -11,6 +12,7 @@ const {
     taskThree, 
     setupDatabase 
 } = require('./fixtures/db')
+
 
 beforeEach(setupDatabase)
 
