@@ -13,6 +13,7 @@ const {
     setupDatabase 
 } = require('./fixtures/db')
 
+
 beforeEach(setupDatabase)
 
 test('Should create task for user', async () => {

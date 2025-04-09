@@ -8,8 +8,8 @@ beforeEach(setupDatabase)
 
 test('Should signup a new user', async () => {
     const response = await request(app).post('/users').send({
-            name: 'Andrew',
-            email: 'andrew@example.com',
+            name: 'Joshua',
+            email: 'jlb135190@gmail.com',
             password: 'MyPass777!'
         }).expect(201)
 
@@ -20,8 +20,8 @@ test('Should signup a new user', async () => {
         // Assertions about the response
         expect(response.body).toMatchObject({
             user: {
-                name: 'Andrew',
-                email: 'andrew@example.com'
+                name: 'Joshua',
+                email: 'jlb135190@gmail.com'
             },
             token: user.tokens[0].token
         })
@@ -103,7 +103,7 @@ test('Should not update invalid user fields', async () => {
         .patch('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send({
-            location: 'Philadelphia'
+            location: 'Missouri'
         })
         .expect(400)
 })
